@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jx-登录页面</title>
+	</head>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+		body{
+			padding: 0px;
+			margin: 0px;
+			font-size: 12px;
+			FONT-FAMILY: Arial, Helvetica, sans-serif,"宋体";
+		}
+		/*头部开始*/
+		.jx-wrap{
+			width: 100%;
+		    min-height: 1000px;
+			margin: 0px;
+		}
+		.jx-top-header{
+			width: 100%;
+			height: 88px;
+			box-shadow: 1px 2px 6px #e1e1e1;
+			padding: 0px;
+	
+		}
+		.jx-top-head{
+			width: 1000px;
+			height: 88px;
+			/*居中*/
+			margin: 0 auto;
+			/*background: black;*/
+		}
+		.jx-logo{
+			float: left;
+			width: 257px;
+			height:63px;
+			margin-top: 15px;
+			/*background: red;*/
+		}
+		
+		.jx-logo p{
+			float: left;
+			padding: 0px;
+			margin: 0px;
+		}
+		.jx-logo .jx-index a{
+			width: 140px;
+		}
+		.jx-logo p a {
+		    display: block;
+		    height: 63px;
+		}
+		.jx-logo .jx-topic {
+		    width: 117px;
+		    height: 63px;
+		    float: right;
+		}
+		.jx-head-nav{
+			width: 77px;
+		    height: 14px;
+		    line-height: 14px;
+		    float: right;
+		    display: inline;
+		    margin: 48px 0 0 20px;
+		    /*绝对定位*/
+		    position: relative;
+		   	/*显示小手*/
+		    cursor: pointer;
+		    /*z-index: 10;*/
+		    /*background: blue;*/
+		}
+		.jx-head-icon{
+			height: 14px;
+			position: relative;
+			z-index: 2;
+		}
+		.jx-head-icon span{
+			float: left;
+			display: inline-block;
+			color: #666;
+			margin-right: 6px;
+			line-height: 14px;
+		}
+		.jx-head-nav .jx-jt {
+		    float: left;
+		    display: inline-block;
+		    background-position: -23px 0;
+		    width: 15px;
+		    height: 14px;
+		}
+		.jx-wrap i {
+    		background: url(img/regLogin-8.png) no-repeat 0 0;
+		}
+		.jx-head-pop{
+			border: 1px solid #ccc;
+		    display: none;
+		    left: -10px;
+		    padding-top: 26px;
+		    position: absolute;
+		    top: -6px;
+		    width: 85px;
+		    z-index: 1;
+		}
+		ul,li{
+			list-style: outside none none;
+		    margin: 0;
+		    padding: 0;
+		}
+		a{
+			COLOR: #666;
+    		text-decoration: none;
+		}
+		.jx-head-pop li a {
+    		color: #999;
+		}
+		
+		.jx-head-pop li {
+		    background: #fff none repeat scroll 0 0;
+		    border-top: 1px dotted #ccc;
+		    height: 24px;
+		    line-height: 24px;
+		    padding-left: 10px;
+		}
+		.jx-reg{
+			float: right;
+		    color: #999;
+		    margin-top: 48px;
+		    height: 14px;
+		    line-height: 14px;
+		}	
+		.jx-reg a, .jx-reg a:hover {
+		    color: #0066cc;
+		    margin-left: 20px;
+		}
+		a:hover{
+			text-decoration: underline;
+		}
+		/*中间部开始*/
+		.jx-main-bg{
+			width: 100%;
+			height: 600px;
+			padding: 0 0 50px;
+			
+		}
+		.jx-main{
+			width: 1000px;
+			height: 500px;
+			margin: 0 auto;
+		    padding: 0;
+		}
+		.jx-content.loginbd {
+		    background: transparent;
+		    border: 0;
+		    box-shadow: 0 0 0 0;
+		}
+		.jx-content {
+		    background: #fff;
+		    border: 3px solid #eaeaea;
+		    border-radius: 5px;
+		    box-shadow: 1px 6px 11px #e4e4e4;
+		    height: 500px;
+		    position: relative;
+		}
+		.jx-content .picFoucs {
+		    display: block;
+		    position: relative;
+		    width: 650px;
+		    height: 600px;
+		    z-index: 1;
+		    cursor: pointer;
+		}
+
+		.jx-contentbd {
+		    background-color: #fff;
+		    overflow: hidden;
+		    position: relative;
+		    width: 350px;
+		    height: 405px;
+		    top: -405px;
+		    left: 650px;
+		}
+		.jx-ewmloginLink{
+			display: block;
+			width: 65px;
+			height: 65px;
+			position: absolute;
+			cursor: pointer;
+			top: 0px;
+			right: 0px;
+			z-index: 9999;
+			
+		}
+		.jx-ewmloginLink i{
+			background-position: bottom left;
+			width: 65px;
+			height: 65px;
+			display: block;
+		}
+		.jx-pcloginLink{
+			display: block;
+			width: 65px;
+			height: 65px;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			cursor: pointer;
+		}
+		.jx-pcloginLink i{
+			background-position: -80px -230px;
+			width: 65px;
+			height: 65px;
+			display: block;
+		}
+		.loginCon{
+			width: 270px;
+			height: 370px;
+			margin-left: 40px;
+			margin-top: 13px;
+			/*background: red;*/
+		}
+		.ewmCon{
+			width: 270px;
+			height: 380px;
+			margin-left: 40px;
+			/*margin-top: 13px;*/
+		}
+		.loginCon .loginTit{
+			margin: 14px 0 19px;
+			height: 40px;
+			overflow: hidden;
+			line-height: 40px;
+			border-bottom: 1px solid #e9e9e9;
+		}
+		.ewmCon h2{
+			height: 70px;
+			line-height: 70px;
+			font-size: 16px;
+			color: #666;
+			margin: 0;
+			padding: 0;
+		}
+		.ewmCon .scanError{
+			text-align: center;
+			position: relative;
+			width: 270px;
+			height: 290px;
+			/*margin: 0;
+			padding: 0;*/
+		}
+		.ewmCon .scanError .scanErrorEwm{
+			width: 150px;
+			height: 150px;
+			margin: 20px auto 40px;
+			position: relative;
+			overflow: hidden;
+		}
+		.ewmCon .scanError .scanErrorEwm img{
+			width: 100%;
+			height: 100%;
+		}
+		.createCode{
+			padding: 0;
+			margin: 0;
+		}
+		.ewmCon .scanError .scanErrorEwm .bj{
+			width: 150px;
+			height: 150px;
+			background-color: #000;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			opacity: 0.5;
+		}
+		.ewmCon .scanError .scanErrorEwm .info{
+			width: 150px;
+			height: 150px;
+			position:absolute;
+			top: 0;
+			left: 0;
+			text-align: center;
+		}
+		.ewmCon .scanError .scanErrorEwm .info p{
+			color: #fff;
+			height: 25px;
+			line-height: 25px;
+			padding: 40px 0 15px;
+		}
+		.ewmCon .scanError .scanErrorEwm .info a{
+			display: inline-block;
+			width: 86px;
+			height: 23px;
+			line-height: 23px;
+			text-align: center;
+			background-color: #e4393c;
+			color: #fff;
+		}
+		.ewmCon .scanError .tipImg{
+			width: 167px;
+			height: 200px;
+			position: absolute;
+			top: -25px;
+			right: -30px;
+			display: none;
+		}
+		.ewmCon .scanError .scanErrorTip i{
+			display: block;
+			float: left;
+			background-position: -270px -150px;
+			width: 33px;
+			height: 33px;
+			margin: 1px 10px 0 65px;
+		}
+		.ewmCon .scanError .scanErrorTip p{
+			float: left;
+			color: #999;
+			line-height: 16px;
+			text-align: left;
+			margin-top: 1px;
+		}
+		.ewmCon .clearfix{
+			height: 34px;
+		}
+		.ewmCon .scanError .scanErrorTip p em{
+			color: #E4393C;
+			font-style: normal;
+		}
+		.ewmCon .scanError .sCanErrorLink{
+			padding-top: 50px;
+			text-align: right;
+		}
+		.ewmCon .scanError .sCanErrorLink a{
+			padding-left: 10px;
+			color: #333;
+		}
+		.ewmCon .scanSuccess{
+			text-align: center;
+		}
+		.ewmCon .scanSuccess .sCanSIcon{
+			margin: 0;
+			padding: 30px 0 20px;
+		}
+		.ewmCon .scanSuccess .sCanSIcon i{
+			display: inline-block;
+			width: 78px;
+			height: 76px;
+			background-position: -170px -150px;
+		}
+		.ewmCon .scanSuccess h4{
+			margin: 0;
+			padding: 0;
+			line-height: 40px;
+			font-size: 18px;
+			color: #333;
+			font-weight: normal;
+		}
+		.ewmCon .scanSuccess p{
+			font-size: 12px;
+			color: #999;
+			line-height: 45px;
+			margin: 0;
+			padding: 0;
+		}
+		.ewmCon .scanSuccess .sCanLink{
+			text-align: left;
+			padding-top: 70px;
+			margin: 0;
+			/*padding: 0;*/
+		}
+		.ewmCon .scanSuccess span{
+			float:right;
+		}
+		.ewmCon .scanSuccess span a{
+			float: left;
+			padding-left: 10px;
+			color: #333;
+		}
+		.ewmCon .scanSuccess .sCanLink .backewm{
+			color: #ff6633;
+		}
+		.loginTit a.on{
+			color: red;
+			font-weight: bold;
+		}
+		.loginTit a {
+			float: left;
+			display: inline-block;
+			color: #999;
+			font-size: 16px;
+		}
+		.loginTit span{
+			float: left;
+			display: inline-block;
+			font-size: 12px;
+			color: #999;
+			padding: 0 18px;
+		}
+		.loginType{
+			height: 267px;
+			border-bottom: 1px solid #ccc;
+			overflow: hidden;
+		}
+		.Frame{
+			width: 270px;
+			height: 40px;
+			position: relative;
+			top: 0;
+			left: 0;
+			margin-bottom: 20px;
+			/*background: red;*/
+		}
+		.loginCon .loginBtn{
+			margin-bottom: 11px;
+			height: 40px;
+			/*background: red;*/
+		}
+		.Frame .filter{
+			width: 43px;
+			height: 42px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			/*background: red;*/
+		}
+		.Frame .filter .userIconBox{
+			display: inline-block;
+			width: 43px;
+			height: 40px;
+			background: #f3f3f3;
+			position: absolute;
+			top: 1px;
+			left: 1px;
+			border-right: 1px solid #dcdcdc;
+		}
+		.Frame .filter p{
+			display: inline-block;
+			font-size: 16px;
+			margin-top: 11px;
+			color: #ccc;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200px;
+			padding-left: 55px;
+		}
+		.enterFrame .text{
+			width: 173px;
+			padding: 0 45px 0 50px;
+		}
+		.Frame .text{
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: none;
+			font-weight: 700;
+			outline:none;
+		}
+		.jx-wrap input {
+		    height: 40px;
+		    line-height: 40px;
+		    color: #999;
+		    border: 1px solid #dcdcdc;
+		    font-size: 16px;
+		}
+		.Frame .filter .userIcon{
+			width: 20px;
+			height: 20px;
+			background-position: -51px 0;
+			margin: 10px 10px 0 11px;
+			/*background: red;*/
+		}
+		.Frame .filter i{
+			float: left;
+			display: inline-block;
+		}
+		.Frame .filter .pwdIcon{
+			width: 16px;
+			height: 22px;
+			background-position: -83px 0;
+			margin: 10px 11px auto 13px;
+		}
+		.Frame .filter .userIconBox{
+			display: inline-block;
+			width: 43px;
+			height: 41px;
+			background: #F3F3F3;
+			position: absolute;
+			top: 1px;
+			left: 1px;
+			border-right: 1px solid #DCDCDC;
+		}
+		.Frame .filter .yzIcon{
+			width: 18px;
+			height: 24px;
+			background-position: -426px 0;
+			margin: 10px 11px auto 13px;
+		}
+		.yzFrame .yzm{
+			position:absolute;
+			left: 189px;
+			top: 1px;
+		}
+		img{
+			border: 0px;
+		}
+		.yzFrame .text{
+			padding-left: 50px;
+			padding-right: 134px;
+			width: 84px;
+		}
+		.loginBtn input{
+			width: 270px;
+			background-color: #e10303;
+			color: #fff;
+			border-radius: 2px;
+			border: 0;
+			cursor: pointer;
+			font-family: "microsoft yahei";
+		}
+		.loginCon .moreChoice{
+			margin-bottom: 16px;
+		}
+		.moreChoice .auto{
+			float: left;
+		}
+		.moreChoice .auto,.moreChoice .forgetPwd{
+			color: #999;
+			display: inline-block;
+		}
+		.moreChoice .auto input{
+			height: auto;
+			border: 0;
+		}
+		input,select{
+			vertical-align: middle;
+		}
+		.moreChoice .freeReg{
+			color: #0066CC;
+			display: inline-block;
+			float: right;
+			padding-left: 13px;
+		}
+		.moreChoice .forgetPwd{
+			float: right;
+		}
+		.cooperate{
+			width: 320px;
+			height: 42px;
+		}
+		.cooperate p{
+			float: left;
+			color: #999;
+			margin: 22px 15px 0 0;
+		}
+		.cooperateWay{
+			width: 243px;
+			height: 42px;
+			margin: 0 auto;
+		}
+		.cooperateWay a i{
+			float: left;
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			margin-left: 12px;
+			margin-top: 16px;
+		}
+		.cooperate .qq i{
+			background-position: 0 -35px;
+			margin-left: 0;
+		}
+		.cooperate .sina i{
+			background-position: -51px -35px;
+		}
+		.cooperate .aliPay i{
+			background-position: -102px -35px;
+		}
+		.cooperate .baidu i{
+			background-position: -153px -35px;
+		}
+		/*.qq:link{
+			color:initial;
+		}*/
+		.jx-footer{
+			width: 100%;
+			padding: 10px 0 0;
+		}
+		.jx-footer{
+			width: 1000px;
+			height: 60px;
+			margin: 0 auto;
+			text-align: center;
+			padding: 0;
+		}
+		.jx-foot p{
+			line-height: 30px;
+			color: #333;
+		}
+		.jx-foot .red{
+			color: #FF0000;
+		}
+		/*body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+		    padding: 0;
+		    margin: 0;
+		}*/
+		.mobileLogin:hover{
+			color: #0066CC;
+		}
+	</style>
+	<body>
+		<div class="jx-wrap">
+			<!--头部开始-->
+			<div class="jx-top-header">
+				<div class="jx-top-head">
+					<!--酒仙网logo-->
+					<div class="jx-logo">
+						<p class="jx-index" style="background :url(img/jx-logo.png) no-repeat;">
+							<a href="home.html" target="_blank"></a>
+							<!--<img src="img/jx-logo.png"/>-->
+						</p>
+						<a class="jx-topic" href="#">
+							<img src="img/slogan.jpg"/>
+						</a>
+					</div>
+					<!--酒仙网帮助中心(包含js动态特效)-->
+					<div class="jx-head-nav">
+						<div class="jx-head-icon">
+							<span>帮助中心</span>
+							<i class="jx-jt"></i>
+						</div>
+						<div class="jx-head-pop" style="display: none;">
+							<ul>
+								<li>
+									<a href="#" target="_blank">配送说明</a>
+								</li>
+								<li>
+									<a href="#" target="_blank">字符方式</a>
+								</li>
+								<li>
+									<a href="#" target="_blank">售后服务</a>
+								</li>
+								<li>
+									<a href="#" target="_blank">企业客户</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="jx-reg">欢迎来到酒仙网！
+						<a href="register.html">免费注册</a>
+					</div>
+				</div>
+			</div>
+			<!--头部结束-->
+			<!--中间部分-->
+			<form action="" method="post">
+				<div class="jx-main-bg" style="background: url(img/backgroundlogin.jpg) no-repeat center top;" >
+					<div class="jx-main">
+						<div class="jx-content loginbd clearfix">
+							<a class="picFoucs" href="javascript:;" target="_blank"></a>
+						</div>
+						<div class="jx-contentbd">
+							<!--用户名密码登录(js切换二维码登录和账号登录)-->
+							<a class="jx-ewmloginLink" style="display: block;">
+								<i></i>
+							</a>
+							<!--扫描二维码登录-->
+							<a class="jx-pcloginLink" style="display: none;">
+								<i></i>
+							</a>
+							<!--用户名登录-->
+							<div class="loginCon" style="display: block;">
+								<div class="loginTit clearfix">
+									<a href="javascript:;" class="userLogin on">账号登录</a>
+									<span>|</span>
+									<a href="javascript:;" class="mobileLogin">手机动态密码登录</a>
+								</div>
+								<div class="loginType loginUsual">
+									<div class="Frame enterFrame">
+										<div class="filter">
+											<em class="userIconBox">
+												<i class="userIcon"></i>
+											</em>
+											<p style="">用户名/邮箱/手机号</p>
+											<i class="judge"></i>
+											<i class="judgeDel"></i>
+										</div>
+										<input id="userName" class="text" name="uname" autocomplete="off" value=""/>
+										<div class="mistakeTip" style="display: none;">
+											请输入用户名/邮箱/手机号
+										</div>
+										<div id="mistakeTip02" style="display: none;">
+											请输入用户名/邮箱/手机号
+										</div>
+									</div>
+									<div class="Frame enterFrame">
+										<div class="filter">
+											<em class="userIconBox">
+												<i class="pwdIcon"></i>
+											</em>
+											<p style="display: block;">密码</p>
+											<i></i>
+											<i></i>
+										</div>
+										<input maxlength="20" id="password" type="password" class="text" autocomplete="off" name="_pwd" onpaste="return false"/>
+										<div class="mistakeTip" style="display: none;">请输入密码</div>
+										<div class="mistakeTip02" style="display: none;">请输入密码</div>
+									</div>
+									<div class="Frame yzFrame" id="validcaptcha">
+										<div class="filter">
+											<em class="userIconBox">
+												<i class="yzIcon"></i>
+											</em>
+											<p>验证码</p>
+											<img class="yzm" id="captchaImage" src="img/captchaimg.jpg" alt="" width="80" height="40"/>
+										</div>
+										<input type="text" name="j_captcha" id="verification" class="text" size="8" maxlength="5" autocomplete="off"/>
+										<a class="refresh" id="_captchaImage" href="javascript:void(0)">
+											<i></i>
+										</a>
+										<div class="mistakeTip" style="display: none;">
+											请输入验证码
+										</div>
+									</div>
+									<div class="loginBtn">
+										<input type="button" name="save" id="save" value="登&nbsp;&nbsp;录" />
+									</div>
+									<div class="moreChoice clearfix">
+										<div class="auto">
+											<input class="check" type="checkbox" name="remember" id="remember" value="yes" />
+											<label for="auto">自动登录</label>
+										</div>
+										<a class="freeReg" href="#">免费注册</a>
+										<a class="forgetPwd" id="foget" href="#">忘记密码</a>
+									</div>
+								</div>
+								<div class="cooperate">
+									<p>使用合作账号登录</p>
+									<div class="cooperateWay clearfix">
+										<a href="#" class="qq">
+											<i></i>
+										</a>
+										<a href="#" class="sina">
+											<i></i>
+										</a>
+										<a href="#" class="aliPay">
+											<i></i>
+										</a>
+										<a href="#" class="baidu">
+											<i></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!--扫描二维码登录-->
+							<div class="ewmCon" style="display: none;">
+								<h2>扫描登录</h2>
+								<!--扫描首页和错误-->
+								<div class="scanError" style="display: block">
+									<!--js实现鼠标移入移出动态效果-->
+									<div class="scanErrorEwm" style="left: -80px;">
+										<img id="ewmImgID" src="img/scancode.htm.jpg"/>
+										<div style="display: none;" class="createCode">
+											<div class="bj"></div>
+											<div class="info">
+												<p>二维码已失效</p>
+												<a href="javascript:void(1)" id="infoid">刷新</a>
+											</div>
+										</div>
+									</div>
+									<div class="tipImg" style="display: block;">
+										<img src="img/tip1.png"/>
+									</div>
+									<div class="scanErrorTip clearfix">
+										<i></i>
+										<p>
+											打开
+											<em>手机酒仙APP</em>
+											<br>
+											扫描二维码
+										</p>
+									</div>
+									<div class="sCanErrorLink">
+										<span>
+											<a href="#">账号密码登录</a>
+											<a href="#">免费注册</a>
+										</span>
+									</div>
+								</div>
+								<!--扫描成功-->
+								<div class="scanSuccess" style="display: none;">
+									<div class="sCanSIcon">
+										<i></i>
+									</div>
+									<h4>扫描成功！</h4>
+									<p>请在手机确认登录</p>
+									<div class="sCanLink">
+										<span>
+											<a href="#">账号密码登录</a>
+											<a href="#">免费注册</a>
+										</span>
+										<a href="javascript:;" id="backewm" class="backewm">返回二维码登录</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!--中间部分-->
+			<!--尾部开始-->
+			<div class="jx-footer" style="height: 90px;">
+				<div class="jx-foot">
+					<p>
+						© &nbsp;酒仙网&nbsp;2011&nbsp;jiuxian.com All &nbsp; Rights Reserved &nbsp;&nbsp;
+						<a href="#" target="_blank">京ICP证110141号</a>
+						  &nbsp;&nbsp;京公网安备1101050188221
+					</p>
+					<p class="red">
+						购买前请确认达到法定饮酒年龄！酒仙网不销售任何含酒精产品给18岁以下人士！
+					</p>
+				</div>
+			</div>
+			<!--尾部结束-->
+		</div>
+	</body>
+	<script type="text/javascript">
+//		$(function(){
+			//帮助中心下拉框js
+			$(".jx-head-nav").hover(function(){
+				$(this).find(".jx-head-pop").show();
+			},function(){
+				$(this).find(".jx-head-pop").hide();
+			})
+			
+//			var fTop = $(".jx-footer").offset().top;
+//			//var sTop = fTop+$(".jx-footer").height()+30;
+//			var padTop = $(window).height()-fTop;
+//		
+//			if(padTop>90){
+//				$(".jx-footer").css('height',padTop+'px');
+//			}else
+//			{
+//				$(".jx-footer").css('height','90px');
+//			}
+//			$(window).resize(function(){
+//				fTop = $(".jx-footer").offset().top;
+//				//sTop = fTop+$(".jx-footer").height()+30;
+//				padTop = $(window).height()-fTop;
+//				if(padTop>90){
+//				$(".jx-footer").css('height',padTop+'px');
+//				}else
+//				{
+//					$(".jx-footer").css('height','90px');
+//				}
+//			})
+		
+			//切换用户账号登录和扫描二维码登录效果
+			$(".jx-ewmloginLink").click(function(){
+				$(".jx-pcloginLink").css("display","block");
+				$(".ewmCon").css("display","block");
+				$(".jx-ewmloginLink").css("display","none");
+				$(".loginCon").css("display","none");
+				//二维码过期失效显示
+				window.setTimeout(function(){
+					$(".createCode").css("display","block");
+				},3000);
+			})
+			$(".jx-pcloginLink").click(function(){
+				$(".jx-pcloginLink").css("display","none");
+				$(".ewmCon").css("display","none");
+				$(".jx-ewmloginLink").css("display","block");
+				$(".loginCon").css("display","block");
+				//重新隐藏过期二维码
+				$(".createCode").css("display","none");
+			});
+			
+			//实现鼠标移入二维码，二维码居中显示动画效果
+			$(".scanErrorEwm").mouseenter(function(){
+					$(this).animate({left:"0px"});
+//					$(this).css("left","0px");
+					$(".tipImg").fadeOut();
+			}).mouseleave(function(){
+				$(this).animate({left:"-80px"});
+				$(".tipImg").fadeIn();
+			});	
+			
+			//二维码过期失效显示
+//			window.setTimeout(function(){
+//				$(".createCode").css("display","block");
+//			},1000);
+			//刷新过期二维码
+			$("#infoid").click(function(){
+				$(".createCode").css("display","none");
+				$(".ewmImgID").src = "img/scancode.htm.jpg";
+				//二维码过期失效显示
+				window.setTimeout(function(){
+					$(".createCode").css("display","block");
+				},3000);
+			});
+//		})
+	</script>
+</html>
